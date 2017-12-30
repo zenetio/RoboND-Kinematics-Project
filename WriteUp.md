@@ -7,7 +7,7 @@
 
 **Overview:**
 
-The target of this project is to provide a kinematic analisys for Kuka R210 robotic arm. In the simulation we process a task to pick, move and drop off an object into a box. In this project I will use ROS system and Gazebo + Rviz as simulation environment. Using Inverse Kinematic (IK), we can find the correct trajectory to drive the arm to drop the object in the desired place.
+The target of this project is to provide a kinematic analisys for Kuka R210 robotic arm. In the simulation we process a task to pick, move and drop off an object into a box. In this project I will use ROS system and Gazebo + Rviz as simulation environment. Using Inverse Kinematic (IK), we can find the correct trajectory to drive the arm to drop the object in the desired place. The complete project can be found in this [repository](https://github.com/zenetio/RoboND-Kinematics-Project.git).
 
 [//]: # (Image References)
 
@@ -88,6 +88,7 @@ def Tn_m(th, alpha, a, d):
 # Transformation from base_link to Link_1
 T0_1 = Tn_m(q1, alpha0, a0, d1).subs(s)
 ```
+
 And we repeat the same approach for all the others links
 ```python
 # Trasformation from link_1 to Link_2
@@ -103,6 +104,7 @@ T5_6 = Tn_m(q6, alpha5, a5, d6).subs(s)
 # Transformation from link_6 to gripper G
 T6_G = Tn_m(q7, alpha6, a6, d7).subs(s)
 ```
+
 And so, we can calculate the complete FK for the gripper pose.
 
 Note that the homogeneous transform has a translational and a rotational section. Using this property we can rearrange the homogeneous transform and write the following:
