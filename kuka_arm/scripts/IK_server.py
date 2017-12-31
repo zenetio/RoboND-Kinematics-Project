@@ -113,7 +113,7 @@ def handle_calculate_IK(req):
             # using geometry to calculate the triangle sides
             side_a = 1.501
             side_b = sqrt(pow((sqrt(Wc[0] * Wc[0] + Wc[1] * Wc[1]) - 0.35), 2) + pow((Wc[2] - 0.75), 2))
-            side_c = 1.25
+            side_c = 1.250
 
             # using geometry to calculate the triangle angles
             angle_a = acos((side_b * side_b + side_c * side_c - side_a * side_a) / (2 * side_b * side_c))
@@ -136,9 +136,13 @@ def handle_calculate_IK(req):
             theta4 = atan2(R3_6[2, 2], -R3_6[0, 2])
             # calculate theta5
             theta5 = atan2(sqrt(R3_6[0, 2] * R3_6[0, 2] + R3_6[2, 2] * R3_6[2, 2]), R3_6[1, 2])
-            # calculate theta6
+			# calculate theta6
             theta6 = atan2(-R3_6[1, 1], R3_6[1, 0])
-
+			# because this model has some singularities, we may consider
+			if( sin(theta5) < 0 ):
+			    theta4 = atan2(-R3_6[2, 2], R3_6[0, 2])
+				theta6 = atan2(R3_6[1, 1], -R3_6[1, 0])
+			
             # Populate response for the IK request
             # In the next line replace theta1,theta2...,theta6 by your joint angle variables
             joint_trajectory_point.positions = [theta1, theta2, theta3, theta4, theta5, theta6]
