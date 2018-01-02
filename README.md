@@ -7,7 +7,7 @@
 
 **Overview:**
 
-The target of this project is to provide a kinematic analisys for Kuka R210 robotic arm. In the simulation we process a task to pick, move and drop off an object into a box. In this project I will use ROS system and Gazebo + Rviz as simulation environment. Using Inverse Kinematic (IK), we can find the correct trajectory to drive the arm to drop the object in the desired place. The complete project can be found in this [repository](https://github.com/zenetio/RoboND-Kinematics-Project.git).
+The target of this project is to provide a kinematic analisys for Kuka R210 robotic arm. In the simulation we process a task to pick, move and drop off an object into a box. In this project I will use ROS system and Gazebo + Rviz as simulation environment. Using Inverse Kinematic (IK), we can find the correct trajectory to drive the arm to drop the object in the desired place. The complete project can be found in this [repository](https://github.com/zenetio/RoboND-Kinematics-Project.git) and here is the [video](https://youtu.be/Zh5tTvKKrH4).
 
 [//]: # (Image References)
 
