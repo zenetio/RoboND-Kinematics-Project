@@ -49,6 +49,7 @@ But what is a link or a joint angle? We will see in the next section. The relash
 Reading the kr210.urdf.xacro file to perform kinematic analysis of Kuka KR210 robot and derive its DH parameters, resulting in Table 1 below.
 
 *Table 1.*
+
 Links | alpha(i-1) | a(i-1) | d(i-1) | theta(i)
 --- | --- | --- | --- | ---
 0->1 | 0 | 0 | 0.75 | 0
@@ -208,6 +209,10 @@ theta4 = atan2(R3_6[2, 2], -R3_6[0, 2])
 theta5 = atan2(sqrt(R3_6[0, 2] * R3_6[0, 2] + R3_6[2, 2] * R3_6[2, 2]), R3_6[1, 2])
 # calculate theta6
 theta6 = atan2(-R3_6[1, 1], R3_6[1, 0])
+# because this model has some singularities, we may consider
+if( sin(theta5) < 0 ):
+    theta4 = atan2(-R3_6[2, 2], R3_6[0, 2])
+    theta6 = atan2(R3_6[1, 1], -R3_6[1, 0])
 ```
 
 ### 5. Project Implementation
